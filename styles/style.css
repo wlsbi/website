@@ -1,0 +1,217 @@
+/* Hello! Thanks for checking out my CSS file. */
+
+:root {
+	--color-regular-text: rgb(50, 50, 50);
+	--color-regular-background: rgb(240, 240, 240);
+
+	--color-selection-text: rgb(0, 0, 0);
+	--color-selection-background: rgb(215, 215, 215);
+
+	font-size: 16px;									/* 16px is a default text size. I put it here just in case but it may be redundant */
+}
+
+html {
+	width: 100vw;										/* scrollbar and "margin: 0 auto;" fix, so the tabs don't jump around*/
+	overflow-x: hidden;									/* https://stackoverflow.com/questions/6357870/scrollbar-on-browser-and-div-margin-0-auto-jumping */
+	
+	font-family: Arial, Helvetica, sans-serif;
+	/*font-family: "Courier New", Courier, monospace;*/		/* since the website doesn't have too much text, I can use monospace, sans-serif is better though */
+
+	color: var(--color-regular-text);
+	background-color: var(--color-regular-background);
+}
+
+body{
+	margin: 0em;										/* for the sticky footer*/
+}
+
+.wrapper-page{
+	max-width: 40em;									/* max-width of the page, bestmotherfucking.website is 40em*/
+	margin: 0 auto;
+
+	padding-left: 0.812em;								/* so we have some space on the sides even on small screens */
+	padding-right: 1.624em;								/* same stuff but with extra space for the scrollbar on the right, default scrollbar width is 13px or 0.812em */
+
+	min-height: 100vh;									/* for the sticky footer*/
+}
+
+.ascii-logo {
+	color: var(--color-regular-text);
+	margin: 0 auto;
+	font-family: "Courier New", Courier, monospace;		/* monospace font is important for ASCII art, but it's already defined*/
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 0.65em;					/*0.2em;*/			/* 0.1, 0.11, 0.19, 0.2 */
+	white-space: pre;				/* this preserves all spaces, it's a must for ASCII art */
+
+	text-decoration: none;				/* cuz it's a link I guess */
+	border-bottom: 0;					/* the underline, ex: 2px daashed red, ex: 1px solid gray */
+
+	padding-top: 3em; /*3em;*/
+	padding-bottom: 1em; /*5em;*/
+}
+
+.ascii-logo:hover {
+	border-bottom: 0;
+}
+
+.navbar{
+	position: sticky;				/* Sticky navbar */
+	top: 0em;						/* Sticky navbar */
+	z-index: 2;						/* for videos */
+	
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;			/* white space below the sticky line */
+	background: var(--color-regular-background);				/* so it's not transparent */
+}
+
+.navbar a{						/* https://stackoverflow.com/questions/11366357/styling-links-inside-a-div-with-a-specific-class */
+	text-decoration: none;				/* removes an underline */
+	color: var(--color-regular-text);	/* because it's a link */
+	font-weight: bold;
+}
+
+.navbar a:hover{
+	text-decoration: none;				/* removes an underline */
+	color: var(--color-regular-text);
+}
+
+.flexbox{
+	display: flex;
+	text-align: center;				/* text centered inside the tabs */
+}
+
+.empty-space-side{
+	flex: 1;						/* takes all the available space */
+	
+	border-top: 0.125em solid var(--color-regular-background);
+	border-bottom: 0.125em solid var(--color-regular-text);
+}
+
+.empty-space-middle{
+	flex: 0 0 0.3em;				/* doesn't expand, doesn't shrink, equals 4em */
+	
+	border-top: 0.125em solid var(--color-regular-background);
+	border-bottom: 0.125em solid var(--color-regular-text);
+}
+
+.flexbox-item-selected{
+	flex: 0 0 4em;
+	padding: 0.3em 0.6em;
+	
+	border-top: 0.125em solid var(--color-regular-text);
+	border-bottom: 0.125em solid var(--color-regular-background);
+}
+
+.flexbox-item{
+	flex: 0 0 4em;
+	padding: 0.3em 0.6em;
+	
+	border-top: 0.125em solid var(--color-regular-background);
+	border-bottom: 0.125em solid var(--color-regular-text);
+}
+
+main{
+	padding-bottom: 3em;
+}
+
+footer{
+	margin: 1em auto;
+	padding-top: 0;
+	text-align: center;
+	font-weight: bold;
+	
+	position: sticky;								/*for the sticky footer */
+	top: 100%;										/*for the sticky footer */
+	
+	border-top: 0.125em solid var(--color-regular-text);
+	padding-top: 1em;
+}
+
+h1{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+h2{
+	padding-top: 0.6em;
+	margin-top: 0;
+}
+
+p{
+	text-align: justify;
+	/*font:1.2em/1.62 sans-serif;*/
+	line-height: 1.62em;
+}
+
+/*COOL link */
+.link{
+	text-decoration: none;
+	color: var(--color-selection-text);
+	font-weight: bold;
+	position: relative;
+	padding: 0.125em;
+}
+
+a.link.underlined:before, a.link.underlined:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+}
+
+a.link.underlined:after{
+	height: 100%;
+	border-bottom: 0.125em solid var(--color-selection-text);;
+	bottom: 0;
+	left: 0;
+	transition: transform 0.2s ease;
+}
+
+a.link.underlined:before{
+	height: 0%;
+	border-top: 0.125em solid var(--color-selection-text);;
+	bottom: 0;
+	left: 0;
+	transition: height 0.3s ease;
+}
+
+a.link.underlined:hover:before{
+	height: 100%;
+	transform: scale(1.08);
+	transition: all 0.3s ease;
+}
+
+a.link.underlined:hover:after{
+	transform: scale(1.08);				/* 1.08 */
+	transition: transform 0.4s ease;
+}
+
+.video-container{
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+}
+
+.video-container iframe{
+	position: absolute;			/* absolute inside relative */
+	z-index: 1;				/* for overlaping navbar */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+::selection {											/* colors when you select something on the page */
+	color: var(--color-selection-text);
+	background-color: var(--color-selection-background);
+}
+
+@media (prefers-color-scheme: dark){
+	:root{
+		--color-regular-text: rgb(240, 240, 240);
+		--color-regular-background: rgb(45, 45, 45);		/* 404040 */
+		--color-selection-text: rgb(255, 255, 255);			/* 215 215 215 */
+		--color-selection-background: rgb(0, 0, 0);
+	}
+}
